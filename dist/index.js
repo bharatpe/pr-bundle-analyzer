@@ -1142,6 +1142,7 @@ async function run() {
     });
 
     await exec.exec(`git fetch`);
+    
     const branches = [inputs.head_branch, inputs.base_branch];
     const branchesStats = [];
     const branchesHeading = [];
