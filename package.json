@@ -1,0 +1,33 @@
+{
+  "name": "pr-bundle-analyzer",
+  "version": "1.0.0",
+  "description": "A Github Action to Analyse your Build Bundle and show stats difference with the Base Branch.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bharatpe/pr-bundle-analyzer.git"
+  },
+  "keywords": [
+    "Github",
+    "Action",
+    "Build",
+    "Analyzer",
+    "Pull",
+    "Request",
+    "Analyzer"
+  ],
+  "author": "BharatPe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bharatpe/pr-bundle-analyzer/issues"
+  },
+  "homepage": "https://github.com/bharatpe/pr-bundle-analyzer#readme",
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "@actions/github": "^5.0.3",
+    "@octokit/rest": "^19.0.4"
+  }
+}
