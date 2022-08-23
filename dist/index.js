@@ -32628,9 +32628,9 @@ async function run() {
   try {
     const inputs = {
       token: core.getInput("token"),
-      bootstrap: core.getInput("bootstrap"),
+      bootstrap: core.getInput("install_command"),
       build_command: core.getInput("build_command"),
-      dist_path: core.getInput("dist_path"),
+      dist_path: core.getInput("build_path"),
       base_branch: core.getInput("base_branch"),
       head_branch: core.getInput("head_branch"),
     };
