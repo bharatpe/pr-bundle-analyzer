@@ -1,6 +1,6 @@
-name: 'Compute JS Bundle size'
-description: 'Github action to compute total JS bundle size'
-author: 'sarthak-saxena'
+name: 'PR Bundle Analyzer'
+description: 'Github action to analyse your build bundle and show stats difference with the Base branch.'
+author: 'BharatPe'
 inputs:
   bootstrap:
     description: 'cli command for installing dependencies ex npm install'
@@ -13,19 +13,21 @@ inputs:
   dist_path:
     description: 'output path for the build package'
     required: true
-    default: 'dist'
+    default: 'build/static'
   base_branch:
+    description: 'Branch on which your feature branch will get merge ex. main'
     required: true
-    default: 'dist'
+    default: 'main'
   head_branch:
+    description: 'Branch in which your new changes exists ex. dev'
     required: true
-    default: 'dist'
+    default: 'main'
 runs:
   using: 'node16'
   main: 'dist/index.js'
 outputs:
-  size: # output will be available to future steps
-    description: 'Build Size'
+  size:
+    description: 'Build Size Difference'
 branding:
   icon: 'hard-drive'
   color: 'blue'
