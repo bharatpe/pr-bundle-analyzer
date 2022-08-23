@@ -14,12 +14,12 @@ async function run() {
   try {
     const inputs = {
       token: core.getInput("token"),
-      bootstrap: core.getInput("install_command"),
+      install_command: core.getInput("install_command"),
       build_command: core.getInput("build_command"),
-      dist_path: core.getInput("build_path"),
+      build_path: core.getInput("build_path"),
       base_branch: core.getInput("base_branch"),
       head_branch: core.getInput("head_branch"),
-    };
+  };
 
     const {
       payload: { pull_request: pullRequest, repository },
@@ -45,7 +45,7 @@ async function run() {
 
     for (let item of branches) {
       await exec.exec(`git checkout ${item}`);
-      await exec.exec(inputs.bootstrap);
+      await exec.exec(inputs.install_command);
       await exec.exec(inputs.build_command);
 
       core.setOutput(
@@ -65,7 +65,7 @@ async function run() {
         },
       };
 
-      await exec.exec(`du ${inputs.dist_path}`, null, outputOptions);
+      await exec.exec(`du ${inputs.build_path}`, null, outputOptions);
       core.setOutput("size", sizeCalOutput);
 
       const arrayOutput = sizeCalOutput.split("\n");
