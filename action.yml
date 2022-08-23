@@ -22,6 +22,10 @@ inputs:
     description: 'Branch in which your new changes exists ex. dev'
     required: true
     default: 'main'
+  token:
+    description: 'The token to use to access the GitHub API'
+    required: true
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
