@@ -13358,11 +13358,36 @@ async function run() {
         |${branchesHeading[3]}|${bytesToSize(branchesStats[0][3])}|${bytesToSize(branchesStats[1][3])}|${bytesToSize(branchesStats[0][3] - branchesStats[1][3])}|
         `;
 
+        const coverage2 = `|Files Type|New Stats (${
+            inputs.head_branch
+          })|Old Stats (${inputs.base_branch})|Differences (New - Old)|
+      |-----|:-----:|:-----:|:-----:|
+      |${branchesHeading[0]}|${bytesToSize(branchesStats[0][0])}|${bytesToSize(
+            branchesStats[1][0]
+          )}|${bytesToSize(branchesStats[0][0] - branchesStats[1][0])}|
+      |${branchesHeading[1]}|${bytesToSize(branchesStats[0][1])}|${bytesToSize(
+            branchesStats[1][1]
+          )}|${bytesToSize(branchesStats[0][1] - branchesStats[1][1])}|
+      |${branchesHeading[2]}|${bytesToSize(branchesStats[0][2])}|${bytesToSize(
+            branchesStats[1][2]
+          )}|${bytesToSize(branchesStats[0][2] - branchesStats[1][2])}|
+      |${branchesHeading[3]}|${bytesToSize(branchesStats[0][3])}|${bytesToSize(
+            branchesStats[1][3]
+          )}|${bytesToSize(branchesStats[0][3] - branchesStats[1][3])}|
+      `;
+
         octokit.rest.issues.createComment({
             owner,
             repo,
             issue_number: issueNumber,
             body: coverage,
+        });
+
+        octokit.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number: issueNumber,
+            body: coverage2,
         });
         
     } catch (error) {
