@@ -1,35 +1,35 @@
 {
-  "name": "pr-bundle-analyzer",
+  "name": "js-bundle-size",
   "version": "1.0.0",
-  "description": "A Github Action to Analyse your Build Bundle and show stats difference with the Base Branch.",
+  "description": "JSBundleSize",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint index.js",
+    "package": "ncc build index.js -o dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bharatpe/pr-bundle-analyzer.git"
+    "url": "git+https://github.com/actions/javascript-action.git"
   },
   "keywords": [
-    "Github",
-    "Action",
-    "Build",
-    "Analyzer",
-    "Pull",
-    "Request",
-    "Analyzer"
+    "GitHub",
+    "Actions",
+    "JavaScript"
   ],
-  "author": "BharatPe",
-  "license": "ISC",
+  "author": "GitHub",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bharatpe/pr-bundle-analyzer/issues"
+    "url": "https://github.com/actions/javascript-action/issues"
   },
-  "homepage": "https://github.com/bharatpe/pr-bundle-analyzer#readme",
+  "homepage": "https://github.com/actions/javascript-action#readme",
   "dependencies": {
-    "@actions/core": "^1.9.1",
-    "@actions/exec": "^1.1.1",
-    "@actions/github": "^5.0.3",
-    "@octokit/rest": "^19.0.4",
-    "@vercel/ncc": "^0.34.0"
+    "@actions/core": "^1.1.1",
+    "@actions/exec": "^1.0.3",
+    "@actions/github": "^2.1.1",
+    "@octokit/rest": "^19.0.4"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.20.5",
+    "eslint": "^6.3.0"
   }
 }

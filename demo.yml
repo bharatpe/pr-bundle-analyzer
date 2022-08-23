@@ -1,6 +1,7 @@
 name: 'PR Bundle Analyzer'
 
 on: [pull_request]
+
 jobs:
   Calculate-Bundle-Difference:
     runs-on: ubuntu-latest
@@ -16,3 +17,4 @@ jobs:
           build_path: 'build/static'
           base_branch: ${{ github.base_ref }}
           head_branch: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
