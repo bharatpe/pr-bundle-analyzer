@@ -1,6 +1,16 @@
 # PR Bundle Analyzer
 A Github Action to analyse your Build Bundle and show stats difference with the Base Branch on each pull request generated. Using this action, developers can check the logs & overall code size compression on every pull request i.e feature basis. If the new changes are making significant increase then they can simply optimise thier code. 
 
+
+## How it works
+
+![Working Demo](./pr-bundle-analyzer.mov)
+
+
+## Output Stats
+<img width="948" alt="Screenshot 2022-08-24 at 9 36 06 AM" src="https://user-images.githubusercontent.com/90181918/186326913-b2c3716c-6b0a-4e45-bf36-ba1aa2d581c8.png">
+
+
 ## Usage:
 
 Checkout [action.yml](./action.yml)
@@ -43,7 +53,7 @@ steps:
 
 ```
 
-Also check [Demo.yml](./Demo.yml) for complete configuration(on using github actions)
+Also check [Demo.yml](./demo.yml) for complete configuration(on using github actions)
 
 ## License
 The scripts and documentation in this project are released under the [MIT License](./LICENSE)
