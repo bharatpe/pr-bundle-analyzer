@@ -34821,6 +34821,7 @@ const github = __nccwpck_require__(3134);
 const { Octokit } = __nccwpck_require__(1563);
 const exec = __nccwpck_require__(2049);
 const { writeJson } = __nccwpck_require__(6499);
+const fs = __nccwpck_require__(7147);
 
 async function run() {
   function bytesToSize(bytes) {
