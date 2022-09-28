@@ -56,8 +56,7 @@ async function run() {
     const branchesHeading = [];
 
     for (let item of branches) {
-
-      await exec.exec(`git reset --hard`);
+      await exec.exec(`git checkout ${item}`);
 
       let data = fs.readFileSync(inputs.file, 'utf8');
       let obj = JSON.parse(data);
@@ -65,8 +64,6 @@ async function run() {
       
       data = JSON.stringify(obj, null, 2);
       fs.writeFileSync(inputs.file, data, 'utf8');
-
-      await exec.exec(`git checkout ${item}`);
       
       const result = getNodeVersion();
       console.log('resssss', result);
@@ -103,7 +100,7 @@ async function run() {
       });
       branchesStats.push(arrOp);
 
-      await exec.exec(`git stash`);
+      await exec.exec(`git reset --hard`);
     }
 
     const coverage = `|Files Type|New Stats (${
