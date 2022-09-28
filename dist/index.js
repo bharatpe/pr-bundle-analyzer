@@ -34562,6 +34562,34 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 6751:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+"use strict";
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "findPackageJson": () => (/* binding */ findPackageJson),
+/* harmony export */   "getNodeVersion": () => (/* binding */ getNodeVersion)
+/* harmony export */ });
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(7147);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1017);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const findPackageJson = (path) => {
+  return fs__WEBPACK_IMPORTED_MODULE_0___default().readFileSync((0,path__WEBPACK_IMPORTED_MODULE_1__.join)(path, 'package.json')).toString();
+};
+
+const getNodeVersion = (path) => {
+  const packageJson = findPackageJson(path);
+
+  return JSON.parse(packageJson).engines.node;
+};
+
+/***/ }),
+
 /***/ 6499:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
@@ -34782,6 +34810,18 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__nccwpck_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__nccwpck_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -34824,6 +34864,7 @@ const { Octokit } = __nccwpck_require__(1563);
 const exec = __nccwpck_require__(2049);
 const { writeJson } = __nccwpck_require__(6499);
 const fs = __nccwpck_require__(7147);
+const { getNodeVersion } = __nccwpck_require__(6751);
 
 async function run() {
   function bytesToSize(bytes) {
@@ -34883,6 +34924,8 @@ async function run() {
 
     for (let item of branches) {
       await exec.exec(`git checkout ${item}`);
+      const result = getNodeVersion(inputs.file);
+      console.log('resssss', result);
       await exec.exec(inputs.install_command);
       await exec.exec(inputs.build_command);
 
