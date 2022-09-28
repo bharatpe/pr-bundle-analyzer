@@ -28,7 +28,7 @@ async function run() {
   };
 
     if (inputs.parseJson) {
-      value = JSON.parse(value)
+      inputs.value = JSON.parse(inputs.value)
     }
 
     const {
@@ -48,12 +48,12 @@ async function run() {
       auth: inputs.token,
     });
 
-    let data = fs.readFileSync(file, 'utf8');
+    let data = fs.readFileSync(inputs.file, 'utf8');
     let obj = JSON.parse(data);
-    obj = writeJson(obj, field, value);
+    obj = writeJson(obj, inputs.field, inputs.value);
     
     data = JSON.stringify(obj, null, 2);
-    fs.writeFileSync(file, data, 'utf8');
+    fs.writeFileSync(inputs.file, data, 'utf8');
 
     await exec.exec(`git fetch`);
     
