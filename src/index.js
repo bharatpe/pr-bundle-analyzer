@@ -64,7 +64,7 @@ async function run() {
 
     for (let item of branches) {
       await exec.exec(`git checkout ${item}`);
-      const result = getNodeVersion(inputs.file);
+      const result = getNodeVersion();
       console.log('resssss', result);
       await exec.exec(inputs.install_command);
       await exec.exec(inputs.build_command);

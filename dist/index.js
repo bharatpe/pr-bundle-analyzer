@@ -34578,12 +34578,13 @@ __nccwpck_require__.r(__webpack_exports__);
 
 
 
-const findPackageJson = (path) => {
-  return fs__WEBPACK_IMPORTED_MODULE_0___default().readFileSync((0,path__WEBPACK_IMPORTED_MODULE_1__.join)(path, 'package.json')).toString();
+const findPackageJson = () => {
+  return fs__WEBPACK_IMPORTED_MODULE_0___default().readFileSync('package.json').toString();
 };
 
 const getNodeVersion = (path) => {
   const packageJson = findPackageJson(path);
+  console.log('-----------packajsn-----', packageJson);
 
   return JSON.parse(packageJson).engines.node;
 };
@@ -34924,7 +34925,7 @@ async function run() {
 
     for (let item of branches) {
       await exec.exec(`git checkout ${item}`);
-      const result = getNodeVersion(inputs.file);
+      const result = getNodeVersion();
       console.log('resssss', result);
       await exec.exec(inputs.install_command);
       await exec.exec(inputs.build_command);
