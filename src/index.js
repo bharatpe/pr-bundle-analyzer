@@ -2,6 +2,7 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const { Octokit } = require("@octokit/rest");
 const exec = require("@actions/exec");
+const { write, writeJson } = require("./json-writer");
 
 async function run() {
   function bytesToSize(bytes) {
@@ -19,7 +20,15 @@ async function run() {
       build_path: core.getInput("build_path"),
       base_branch: core.getInput("base_branch"),
       head_branch: core.getInput("head_branch"),
+      file: core.getInput('file', { required: true }),
+      field: core.getInput('field', { required: true }),
+      value: core.getInput('value', { required: true }),
+      parseJson: !!core.getInput('parse_json', { required: false }),
   };
+
+    if (inputs.parseJson) {
+      value = JSON.parse(value)
+    }
 
     const {
       payload: { pull_request: pullRequest, repository },
@@ -37,6 +46,13 @@ async function run() {
     const octokit = new Octokit({
       auth: inputs.token,
     });
+
+    let data = fs.readFileSync(file, 'utf8');
+    let obj = JSON.parse(data);
+    obj = writeJson(obj, field, value);
+    
+    data = JSON.stringify(obj, null, 2);
+    fs.writeFileSync(file, data, 'utf8');
 
     await exec.exec(`git fetch`);
     
