@@ -57,7 +57,7 @@ async function run() {
 
     for (let item of branches) {
 
-      await exec.exec(`git add .`);
+      await exec.exec(`git stash`);
 
       let data = fs.readFileSync(inputs.file, 'utf8');
       let obj = JSON.parse(data);
@@ -67,6 +67,7 @@ async function run() {
       fs.writeFileSync(inputs.file, data, 'utf8');
 
       await exec.exec(`git checkout ${item}`);
+      await exec.exec(`git stash apply`);
       const result = getNodeVersion();
       console.log('resssss', result);
 
