@@ -34954,6 +34954,8 @@ async function run() {
         return parseInt(i[0]) * 1000;
       });
       branchesStats.push(arrOp);
+
+      await exec.exec(`git stash`);
     }
 
     const coverage = `|Files Type|New Stats (${
