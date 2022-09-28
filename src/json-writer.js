@@ -18,5 +18,7 @@ export const writeJson = (obj, field, value) => {
         }
     });
 
+    console.log('rooooooooot -', root );
+
     return root;
 }
