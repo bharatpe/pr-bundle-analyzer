@@ -49,13 +49,6 @@ async function run() {
       auth: inputs.token,
     });
 
-    let data = fs.readFileSync(inputs.file, 'utf8');
-    let obj = JSON.parse(data);
-    obj = writeJson(obj, inputs.field, inputs.value);
-    
-    data = JSON.stringify(obj, null, 2);
-    fs.writeFileSync(inputs.file, data, 'utf8');
-
     await exec.exec(`git fetch`);
     
     const branches = [inputs.head_branch, inputs.base_branch];
@@ -63,10 +56,20 @@ async function run() {
     const branchesHeading = [];
 
     for (let item of branches) {
+
+      await exec.exec(`git reset --hard`);
+
+      let data = fs.readFileSync(inputs.file, 'utf8');
+      let obj = JSON.parse(data);
+      obj = writeJson(obj, inputs.field, inputs.value);
+      
+      data = JSON.stringify(obj, null, 2);
+      fs.writeFileSync(inputs.file, data, 'utf8');
+
       await exec.exec(`git checkout ${item}`);
       const result = getNodeVersion();
       console.log('resssss', result);
-      
+
       await exec.exec(inputs.install_command);
       await exec.exec(inputs.build_command);
 
