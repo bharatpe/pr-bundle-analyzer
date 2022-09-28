@@ -66,8 +66,7 @@ async function run() {
       await exec.exec(`git checkout ${item}`);
       const result = getNodeVersion();
       console.log('resssss', result);
-      console.log('access------------ ')
-      await exec.exec('git config --global user.name');
+      
       await exec.exec(inputs.install_command);
       await exec.exec(inputs.build_command);
 
