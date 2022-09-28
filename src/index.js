@@ -2,7 +2,7 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const { Octokit } = require("@octokit/rest");
 const exec = require("@actions/exec");
-const { write, writeJson } = require("./json-writer");
+const { writeJson } = require("./json-writer");
 
 async function run() {
   function bytesToSize(bytes) {
