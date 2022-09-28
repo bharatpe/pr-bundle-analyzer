@@ -34580,7 +34580,7 @@ const findPackageJson = () => {
 
 const getNodeVersion = (path) => {
   const packageJson = findPackageJson(path);
-  return JSON.parse(packageJson).dependencies[native-support-handler];
+  return JSON.parse(packageJson).dependencies;
 };
 
 /***/ }),
