@@ -34573,10 +34573,6 @@ __nccwpck_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(7147);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1017);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
-
-
 
 const findPackageJson = () => {
   return fs__WEBPACK_IMPORTED_MODULE_0___default().readFileSync('package.json').toString();
@@ -34584,9 +34580,7 @@ const findPackageJson = () => {
 
 const getNodeVersion = (path) => {
   const packageJson = findPackageJson(path);
-  console.log('-----------packajsn-----', packageJson);
-
-  return JSON.parse(packageJson).engines.node;
+  return JSON.parse(packageJson).dependencies.native-support-handler;
 };
 
 /***/ }),
@@ -34618,9 +34612,6 @@ const writeJson = (obj, field, value) => {
             }
         }
     });
-
-    console.log('rooooooooot -', root );
-
     return root;
 }
 
