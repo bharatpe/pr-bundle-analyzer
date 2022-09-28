@@ -34909,7 +34909,7 @@ async function run() {
 
     for (let item of branches) {
 
-      await exec.exec(`git reset --hard`);
+      await exec.exec(`git add .`);
 
       let data = fs.readFileSync(inputs.file, 'utf8');
       let obj = JSON.parse(data);
